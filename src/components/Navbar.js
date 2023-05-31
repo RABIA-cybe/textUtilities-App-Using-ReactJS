@@ -4,6 +4,28 @@ import { Link } from 'react-router-dom'
 
 
 export default function Navbar(props) {
+
+
+ function addActiveClass() {
+  const menuItems = document.querySelectorAll('.nav-item');
+
+  // Remove 'active' class from all menu items
+  menuItems.forEach((menuItem) => {
+    menuItem.classList.remove('active');
+  });
+
+  // Add 'active' class to the clicked menu item
+  this.classList.add('active');
+}
+
+// Get all menu items
+const menuItems = document.querySelectorAll('.nav-item');
+
+// Attach click event listener to each menu item
+menuItems.forEach((menuItem) => {
+  menuItem.addEventListener('click', addActiveClass);
+});
+
   return (
     <nav className={`navbar navbar-expand-lg  navbar-${props.mode} bg-${props.mode}`}>
     <div className="container-fluid">
@@ -13,8 +35,8 @@ export default function Navbar(props) {
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
-            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+          <li className="nav-item active" >
+            <Link className="nav-link " aria-current="page" to="/">Home</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/about">{props.aboutText}</Link>
